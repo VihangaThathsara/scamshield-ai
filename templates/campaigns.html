@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}Scam Campaigns | ScamShield AI{% endblock %}
+{% block content %}
+<section class="container py-5">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
+        <div>
+            <span class="eyebrow">PATTERN RECOGNITION AND CLUSTERING</span>
+            <h1 class="fw-bold mt-2 mb-0">Detected Scam Campaigns</h1>
+        </div>
+        <a href="{{ url_for('dashboard') }}" class="btn btn-outline-primary">Back to Dashboard</a>
+    </div>
+
+    <div class="row g-4">
+        {% for item in campaigns %}
+        <div class="col-xl-6">
+            <div class="section-card h-100">
+                <div class="d-flex justify-content-between gap-3 align-items-start">
+                    <div>
+                        <span class="badge text-bg-primary">Cluster {{ item.cluster.cluster_id + 1 }}</span>
+                        <h4 class="fw-bold mt-3">Possible Related Campaign</h4>
+                    </div>
+                    <span class="risk-pill {% if item.cluster.average_risk >= 75 %}high{% elif item.cluster.average_risk >= 50 %}suspicious{% else %}moderate{% endif %}">
+                        {{ item.cluster.average_risk }}
+                    </span>
+                </div>
+
+                <div class="row g-3 mt-2">
+                    <div class="col-4"><div class="metric-box"><small>Reports</small><strong>{{ item.cluster.report_count }}</strong></div></div>
+                    <div class="col-4"><div class="metric-box"><small>Numbers</small><strong>{{ item.cluster.phone_count }}</strong></div></div>
+                    <div class="col-4"><div class="metric-box"><small>Avg. Risk</small><strong>{{ item.cluster.average_risk }}</strong></div></div>
+                </div>
+
+                <h6 class="fw-bold mt-4">Common Categories</h6>
+                <div class="d-flex flex-wrap gap-2">
+                    {% for category in item.categories %}
+                    <span class="badge rounded-pill text-bg-light border">{{ category.category }} ({{ category.count }})</span>
+                    {% endfor %}
+                </div>
+
+                <h6 class="fw-bold mt-4">High-Risk Samples</h6>
+                {% for sample in item.samples %}
+                <div class="campaign-sample">
+                    <div class="d-flex justify-content-between gap-3">
+                        <strong>{{ sample.phone_number }}</strong>
+                        <span>{{ sample.risk_score }}/100</span>
+                    </div>
+                    <p class="small text-secondary mb-0 mt-2">{{ sample.message }}</p>
+                </div>
+                {% endfor %}
+
+                <div class="small text-secondary mt-3">Latest activity: {{ item.cluster.latest_activity }}</div>
+            </div>
+        </div>
+        {% else %}
+        <div class="col-12">
+            <div class="section-card text-center py-5">
+                <h4>No campaign clusters detected</h4>
+                <p class="text-secondary mb-0">Scam reports will be grouped automatically as they are submitted.</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Alerts | ScamShield AI{% endblock %}
+{% block content %}
+<section class="container py-5">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
+        <div><span class="eyebrow">EARLY WARNING MODULE</span><h1 class="fw-bold mt-2 mb-0">System Alerts</h1></div>
+        <a href="{{ url_for('dashboard') }}" class="btn btn-outline-primary">Back to Dashboard</a>
+    </div>
+
+    <div class="row g-4">
+        {% for alert in alerts %}
+        <div class="col-lg-6">
+            <div class="section-card h-100 alert-card">
+                <div class="d-flex justify-content-between gap-3">
+                    <div>
+                        <span class="badge {% if alert.status == 'Open' %}text-bg-danger{% else %}text-bg-secondary{% endif %}">{{ alert.status }}</span>
+                        <h4 class="fw-bold mt-3">{{ alert.title }}</h4>
+                    </div>
+                    <span class="risk-pill high">{{ alert.risk_score }}</span>
+                </div>
+                <p class="text-secondary mt-3">{{ alert.details }}</p>
+                <div class="small">
+                    <strong>Phone:</strong> {{ alert.phone_number }}<br>
+                    <strong>Category:</strong> {{ alert.category }}<br>
+                    <strong>Created:</strong> {{ alert.created_at }}
+                </div>
+                {% if alert.status == 'Open' %}
+                <form method="post" action="{{ url_for('close_alert', alert_id=alert.id) }}" class="mt-4">
+<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <button class="btn btn-outline-secondary btn-sm">Mark as Closed</button>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+        {% else %}
+        <div class="col-12">
+            <div class="section-card text-center py-5">
+                <h4>No alerts yet</h4>
+                <p class="text-secondary mb-0">Alerts are created when a report reaches a risk score of 75 or above.</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

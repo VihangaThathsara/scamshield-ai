@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Page Not Found{% endblock %}
+{% block content %}
+<section class="container py-5 text-center">
+    <div class="section-card py-5">
+        <h1 class="display-4 fw-bold">404</h1>
+        <p class="text-secondary">The requested page could not be found.</p>
+        <a href="{{ url_for('home') }}" class="btn btn-primary">Go Home</a>
+    </div>
+</section>
+{% endblock %}

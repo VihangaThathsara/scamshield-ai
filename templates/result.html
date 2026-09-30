@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Analysis Result | ScamShield AI{% endblock %}
+{% block content %}
+<section class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-xl-9">
+            <div class="section-card">
+                <div class="d-flex flex-column flex-md-row justify-content-between gap-3">
+                    <div>
+                        <span class="eyebrow">AI ANALYSIS COMPLETE</span>
+                        <h1 class="fw-bold mt-2">Report Result</h1>
+                    </div>
+                    <span class="risk-pill {{ report.risk_level|lower }}">
+                        {{ report.risk_score }}/100 — {{ report.risk_level }} Risk
+                    </span>
+                </div>
+
+                <div class="row g-4 mt-3">
+                    <div class="col-md-4"><div class="metric-box"><small>Prediction</small><strong class="text-capitalize">{{ report.predicted_label }}</strong></div></div>
+                    <div class="col-md-4"><div class="metric-box"><small>Confidence</small><strong>{{ report.prediction_confidence }}%</strong></div></div>
+                    <div class="col-md-4"><div class="metric-box"><small>Campaign Cluster</small><strong>{% if report.cluster_id is not none %}Cluster {{ report.cluster_id + 1 }}{% else %}Not Assigned{% endif %}</strong></div></div>
+                </div>
+
+                <div class="message-preview mt-4">
+                    <div class="small text-secondary mb-2">Reported Number</div>
+                    <strong>{{ report.phone_number }}</strong>
+                    <hr>
+                    <div class="small text-secondary mb-2">Message</div>
+                    <p class="mb-0">{{ report.message }}</p>
+                </div>
+
+                {% if report.risk_score >= 75 %}
+                <div class="alert alert-danger mt-4 mb-0">
+                    <strong>Early Warning:</strong>
+                    This report generated a high-risk administrator alert.
+                </div>
+                {% endif %}
+
+                <div class="d-flex flex-wrap gap-3 mt-4">
+                    <a href="{{ url_for('report_scam') }}" class="btn btn-primary">Submit Another Report</a>
+                    <a href="{{ url_for('home') }}" class="btn btn-outline-secondary">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",()=>{document.querySelectorAll(".toast").forEach(e=>new bootstrap.Toast(e,{autohide:true}).show());document.querySelectorAll("textarea").forEach(t=>t.addEventListener("input",()=>{t.style.height="auto";t.style.height=`${t.scrollHeight}px`}))});

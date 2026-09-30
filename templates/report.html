@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}Report a Scam | ScamShield AI{% endblock %}
+{% block content %}
+<section class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-xl-8">
+            <div class="section-card">
+                <span class="eyebrow">SCAM REPORTING PORTAL</span>
+                <h1 class="fw-bold mt-2">Report a suspicious message</h1>
+                <p class="text-secondary">
+                    Submitted information is analysed for scam indicators,
+                    related patterns and risk level.
+                </p>
+
+                <form method="post" enctype="multipart/form-data" class="row g-4 mt-1">
+<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Phone Number</label>
+                        <input type="text" class="form-control form-control-lg" name="phone_number" placeholder="+94771234567" autocomplete="off" required>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Suspected Category</label>
+                        <select class="form-select form-select-lg" name="category">
+                            <option>Lottery Scam</option>
+                            <option>Fake Bank</option>
+                            <option>SIM Expiry</option>
+                            <option>Fake Job</option>
+                            <option>Loan Scam</option>
+                            <option>Delivery Scam</option>
+                            <option>Phishing Link</option>
+                            <option selected>Other</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label fw-semibold">SMS / Message</label>
+                        <textarea class="form-control" name="message" rows="6" placeholder="Paste the suspicious message here..." required></textarea>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Received Date</label>
+                        <input type="date" class="form-control" name="received_date">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Received Time</label>
+                        <input type="time" class="form-control" name="received_time">
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label fw-semibold">Screenshot <span class="text-secondary">(Optional)</span></label>
+                        <input type="file" class="form-control" name="screenshot" accept=".png,.jpg,.jpeg,.webp">
+                        <div class="form-text">PNG, JPG, JPEG or WEBP. Maximum size: 5 MB.</div>
+                    </div>
+
+                    <div class="col-12">
+                        <button class="btn btn-primary btn-lg w-100" type="submit">Analyse and Submit Report</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
