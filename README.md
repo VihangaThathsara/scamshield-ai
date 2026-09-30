@@ -40,9 +40,19 @@ Users can submit suspicious messages with an optional screenshot, view an analys
 
 <div align="center">
 
-**Python · Flask · Jinja2 · HTML · CSS**
+### Backend & Web
 
-**scikit-learn · pandas · NumPy · Pillow · SQLite**
+<img src="https://skillicons.dev/icons?i=python,flask,html,css&theme=dark"
+     alt="Python, Flask, HTML and CSS"/>
+
+<p>Python · Flask · Jinja2 · HTML · CSS</p>
+
+### Machine Learning & Database
+
+<img src="https://skillicons.dev/icons?i=sklearn,sqlite&theme=dark"
+     alt="scikit-learn and SQLite"/>
+
+<p>scikit-learn · pandas · NumPy · Pillow · SQLite</p>
 
 </div>
 
@@ -170,8 +180,6 @@ This project demonstrates English-message classification using the included data
 Phone formatting is normalized, but local numbers are not automatically converted to an international country code. The Flask development server is intended for local use. Public hosting requires additional abuse prevention, moderation and deployment configuration.
 
 ## 👨‍💻 Developer
-
-<div align="center">
 
 <h3>Vihanga Thathsara</h3>
 
