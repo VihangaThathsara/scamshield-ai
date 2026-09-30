@@ -40,19 +40,33 @@ Users can submit suspicious messages with an optional screenshot, view an analys
 
 <div align="center">
 
-### Backend & Web
+<h3>Backend & Web</h3>
 
-<img src="https://skillicons.dev/icons?i=python,flask,html,css&theme=dark"
-     alt="Python, Flask, HTML and CSS"/>
+<p>
+  <img src="https://img.shields.io/badge/Python-0F172A?style=for-the-badge&logo=python&logoColor=3776AB" alt="Python"/>
+  <img src="https://img.shields.io/badge/Flask-0F172A?style=for-the-badge&logo=flask&logoColor=FFFFFF" alt="Flask"/>
+  <img src="https://img.shields.io/badge/Jinja2-0F172A?style=for-the-badge&logo=jinja&logoColor=EF4444" alt="Jinja2"/>
+</p>
 
-<p>Python · Flask · Jinja2 · HTML · CSS</p>
+<p>
+  <img src="https://img.shields.io/badge/HTML5-0F172A?style=for-the-badge&logo=html5&logoColor=E34F26" alt="HTML5"/>
+  <img src="https://img.shields.io/badge/CSS3-0F172A?style=for-the-badge&logo=css&logoColor=38BDF8" alt="CSS3"/>
+</p>
 
-### Machine Learning & Database
+<br/>
 
-<img src="https://skillicons.dev/icons?i=sklearn,sqlite&theme=dark"
-     alt="scikit-learn and SQLite"/>
+<h3>Machine Learning & Data</h3>
 
-<p>scikit-learn · pandas · NumPy · Pillow · SQLite</p>
+<p>
+  <img src="https://img.shields.io/badge/scikit--learn-0F172A?style=for-the-badge&logo=scikitlearn&logoColor=F7931E" alt="scikit-learn"/>
+  <img src="https://img.shields.io/badge/pandas-0F172A?style=for-the-badge&logo=pandas&logoColor=A78BFA" alt="pandas"/>
+  <img src="https://img.shields.io/badge/NumPy-0F172A?style=for-the-badge&logo=numpy&logoColor=4DABCF" alt="NumPy"/>
+</p>
+
+<p>
+  <img src="https://img.shields.io/badge/Pillow-0F172A?style=for-the-badge&logo=python&logoColor=FBBF24" alt="Pillow"/>
+  <img src="https://img.shields.io/badge/SQLite-0F172A?style=for-the-badge&logo=sqlite&logoColor=38BDF8" alt="SQLite"/>
+</p>
 
 </div>
 
